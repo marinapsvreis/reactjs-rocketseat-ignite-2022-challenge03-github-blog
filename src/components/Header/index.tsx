@@ -1,3 +1,10 @@
+import coverImg from '../../assets/cover.png'
+import { CoverContainer, HeaderContainer } from './styles'
+
 export function Header() {
-  return <h1>Header</h1>
+  return (
+    <HeaderContainer>
+      <CoverContainer src={coverImg} alt="" />
+    </HeaderContainer>
+  )
 }
