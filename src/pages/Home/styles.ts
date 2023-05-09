@@ -38,6 +38,15 @@ export const ProfileContainer = styled.div`
       margin-top: 5px;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: -20%;
+
+    img {
+      width: 100%;
+    }
+  }
 `
 
 export const ProfileName = styled.p`
@@ -58,6 +67,12 @@ export const InfoContainer = styled.div`
 export const LabelsContainer = styled.div`
   display: flex;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
 `
 
 export const LabelContainer = styled.div`
