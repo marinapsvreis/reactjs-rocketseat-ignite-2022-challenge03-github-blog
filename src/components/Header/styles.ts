@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
 
 export const CoverBackground = styled.div`
   width: 100vw;
-  height: 296px;
+  height: 18.5rem;
   background-image: url(${coverImg});
   background-repeat: no-repeat;
   background-size: cover;
@@ -18,14 +18,14 @@ export const CoverBackground = styled.div`
   div {
     display: flex;
     justify-content: center;
-    padding-top: 64px;
+    padding-top: 4rem;
 
     width: 100%;
     height: 100%;
 
     img {
-      width: 148px;
-      height: 64px;
+      width: 9.25rem;
+      height: 4rem;
     }
   }
 `

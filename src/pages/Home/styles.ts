@@ -1,22 +1,22 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
-  margin-top: 296px;
+  margin-top: 18.5rem;
   display: flex;
   justify-content: center;
 `
 export const ProfileContainer = styled.div`
   display: flex;
-  gap: 32px;
-  max-width: 864px;
+  gap: 2rem;
+  max-width: 54rem;
   background: ${(props) => props.theme['base-profile']};
   border-radius: 10px;
-  padding: 40px 32px;
+  padding: 2.5rem 2rem;
 
   margin-top: -11%;
 
   img {
-    width: 148px;
+    width: 9.25rem;
     border-radius: 10px;
   }
 
@@ -28,11 +28,11 @@ export const ProfileContainer = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
 
       text-decoration: none;
 
-      font-size: 12px;
+      font-size: 0.75rem;
       color: ${(props) => props.theme.blue};
     }
   }
@@ -40,9 +40,9 @@ export const ProfileContainer = styled.div`
 
 export const ProfileName = styled.p`
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: ${(props) => props.theme['base-title']};
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 `
 
 export const InfoContainer = styled.div`
@@ -50,19 +50,19 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  height: calc(100% - 40px);
+  height: calc(100% - 2.5rem);
 `
 
 export const LabelsContainer = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 1.5rem;
 `
 
 export const LabelContainer = styled.div`
   display: flex;
 
   img {
-    width: 18px;
-    margin-right: 8px;
+    width: 1.125rem;
+    margin-right: 0.5rem;
   }
 `
