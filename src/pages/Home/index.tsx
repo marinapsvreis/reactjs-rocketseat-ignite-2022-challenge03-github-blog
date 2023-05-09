@@ -1,4 +1,5 @@
 import { ArrowSquareOut } from 'phosphor-react'
+import { useEffect, useState } from 'react'
 import buildingIcon from '../../assets/building.svg'
 import followersIcon from '../../assets/followers.svg'
 import githubIcon from '../../assets/github.svg'
@@ -11,25 +12,50 @@ import {
   ProfileName,
 } from './styles'
 
+interface githubProfile {
+  name: string
+  bio: string
+  followers: number
+}
+
 export function Home() {
+  const [profile, setProfile] = useState<githubProfile>({
+    name: '',
+    bio: '',
+    followers: 0,
+  })
+
+  async function getInfoProfile() {
+    await fetch('https://api.github.com/users/marinapsvreis')
+      .then((response) => response.json())
+      .then((data) => {
+        setProfile({
+          name: data.name,
+          bio: data.bio,
+          followers: data.followers,
+        })
+      })
+      .catch((error) => console.log(error))
+  }
+
+  useEffect(() => {
+    getInfoProfile()
+  }, [])
+
   return (
     <HomeContainer>
       <ProfileContainer>
         <img src="https://github.com/marinapsvreis.png" alt="" />
         <div>
           <header>
-            <ProfileName>Marina Portugal</ProfileName>
+            <ProfileName>{profile.name}</ProfileName>
             <a href="https://github.com/marinapsvreis">
               <p>GITHUB </p>
               <ArrowSquareOut size={18} />
             </a>
           </header>
           <InfoContainer>
-            <p>
-              Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-              viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-              volutpat pulvinar vel mass.
-            </p>
+            <p>{profile.bio}</p>
             <LabelsContainer>
               <LabelContainer>
                 <img src={githubIcon} alt="" />
@@ -41,7 +67,7 @@ export function Home() {
               </LabelContainer>
               <LabelContainer>
                 <img src={followersIcon} alt="" />
-                <p>32 seguidores</p>
+                <p>{profile.followers} seguidores</p>
               </LabelContainer>
             </LabelsContainer>
           </InfoContainer>

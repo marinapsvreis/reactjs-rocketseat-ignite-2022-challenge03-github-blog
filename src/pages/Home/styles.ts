@@ -27,13 +27,15 @@ export const ProfileContainer = styled.div`
     a {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: start;
       gap: 0.5rem;
 
       text-decoration: none;
 
       font-size: 0.75rem;
       color: ${(props) => props.theme.blue};
+
+      margin-top: 5px;
     }
   }
 `
