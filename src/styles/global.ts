@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, textarea, button {
+    body, input, textarea, button {        
         font: 400 1rem 'Nunito', sans-serif;
     }
 `
