@@ -2,7 +2,7 @@ import { ArrowSquareOut } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import buildingIcon from '../../assets/building.svg'
 import followersIcon from '../../assets/followers.svg'
-import githubIcon from '../../assets/github.svg'
+import githubIcon from '@/assets/github.svg'
 import { Card } from './components/Card'
 import {
   CardsContainer,
