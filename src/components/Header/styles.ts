@@ -6,11 +6,13 @@ export const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   z-index: -1;
+
+  width: 100%;
 `
 
 export const CoverBackground = styled.div`
-  width: 100vw;
   height: 18.5rem;
+  width: 100%;
   background-image: url(${coverImg});
   background-repeat: no-repeat;
   background-size: cover;

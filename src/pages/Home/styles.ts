@@ -127,3 +127,12 @@ export const SearchContainer = styled.div`
     }
   }
 `
+
+export const CardsContainer = styled.div`
+  max-width: 896px;
+  margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 14.625rem;
+`
