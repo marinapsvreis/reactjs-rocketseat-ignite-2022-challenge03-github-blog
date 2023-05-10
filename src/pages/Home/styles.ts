@@ -15,7 +15,7 @@ export const ProfileContainer = styled.div`
   border-radius: 10px;
   padding: 2.5rem 2rem;
 
-  margin-top: -6.625rem;
+  margin-top: -7.125rem;
 
   img {
     width: 9.25rem;
