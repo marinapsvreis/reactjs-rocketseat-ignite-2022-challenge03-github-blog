@@ -25,7 +25,7 @@ export const CoverBackground = styled.div`
 
     img {
       width: 9.25rem;
-      height: 4rem;
+      height: 6.125rem;
     }
   }
 `

@@ -10,6 +10,8 @@ import {
   LabelsContainer,
   ProfileContainer,
   ProfileName,
+  ProfileText,
+  SearchContainer,
 } from './styles'
 
 interface githubProfile {
@@ -46,7 +48,7 @@ export function Home() {
     <HomeContainer>
       <ProfileContainer>
         <img src="https://github.com/marinapsvreis.png" alt="" />
-        <div>
+        <ProfileText>
           <header>
             <ProfileName>{profile.name}</ProfileName>
             <a href="https://github.com/marinapsvreis">
@@ -71,8 +73,15 @@ export function Home() {
               </LabelContainer>
             </LabelsContainer>
           </InfoContainer>
-        </div>
+        </ProfileText>
       </ProfileContainer>
+      <SearchContainer>
+        <header>
+          <h4>Publicações</h4>
+          <p>6 publicações</p>
+        </header>
+        <input type="text" placeholder="Buscar conteúdo" />
+      </SearchContainer>
     </HomeContainer>
   )
 }
