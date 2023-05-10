@@ -28,6 +28,7 @@ export const CardContainer = styled.div`
     margin-top: 1.25rem;
     text-overflow: ellipsis;
     height: 7rem;
+    overflow: hidden;
   }
 
   @media (max-width: 928px) {
