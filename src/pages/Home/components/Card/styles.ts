@@ -19,15 +19,18 @@ export const CardContainer = styled.div`
       color: ${(props) => props.theme['base-title']};
     }
 
-    p{
+    p {
       white-space: nowrap;
     }
   }
 
-    .description{
-      margin-top: 1.25rem;
-      text-overflow: ellipsis;
-      height: 7rem;
+  .description {
+    margin-top: 1.25rem;
+    text-overflow: ellipsis;
+    height: 7rem;
+  }
 
-    }
+  @media (max-width: 928px) {
+    max-width: 100%;
+  }
 `
