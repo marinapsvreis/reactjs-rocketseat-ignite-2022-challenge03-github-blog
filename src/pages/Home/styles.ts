@@ -41,7 +41,7 @@ export const ProfileContainer = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 628px) {
     flex-direction: column;
     margin-top: -20%;
 
@@ -74,7 +74,7 @@ export const LabelsContainer = styled.div`
   display: flex;
   gap: 1.5rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 628px) {
     flex-direction: column;
     margin-top: 1rem;
     gap: 0.5rem;
