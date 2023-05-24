@@ -16,18 +16,27 @@ import {
   SearchContainer,
 } from './styles'
 
-interface githubProfile {
+interface GithubProfile {
   name: string
   bio: string
   followers: number
 }
 
+export interface Issue {
+  id: number
+  title: string
+  body: string
+  created_at: string
+}
+
 export function Home() {
-  const [profile, setProfile] = useState<githubProfile>({
+  const [profile, setProfile] = useState<GithubProfile>({
     name: '',
     bio: '',
     followers: 0,
   })
+
+  const [issues, setIssues] = useState<Issue[]>([])
 
   async function getInfoProfile() {
     await fetch('https://api.github.com/users/marinapsvreis')
@@ -42,8 +51,20 @@ export function Home() {
       .catch((error) => console.log(error))
   }
 
+  async function getIssuesFromRepository() {
+    await fetch(
+      'https://api.github.com/search/issues?q=%20repo:marinapsvreis/rocketseat-ignite-reactjs-trilhanova-desafio03-github-blog',
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setIssues(data.items)
+      })
+      .catch((error) => console.log(error))
+  }
+
   useEffect(() => {
     getInfoProfile()
+    getIssuesFromRepository()
   }, [])
 
   return (
@@ -85,12 +106,15 @@ export function Home() {
         <input type="text" placeholder="Buscar conteúdo" />
       </SearchContainer>
       <CardsContainer>
+        {issues.map((issue) => {
+          return <Card key={issue.id} issue={issue} />
+        })}
+
+        {/* <Card />
         <Card />
         <Card />
         <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card /> */}
       </CardsContainer>
     </HomeContainer>
   )
