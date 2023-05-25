@@ -17,43 +17,41 @@ import followersIcon from '../../../../assets/followers.svg'
 const userName = import.meta.env.VITE_GITHUB_USERNAME
 
 interface GithubProfile {
-  name: string
+  login: string
   bio: string
+  avatar_url: string
+  html_url: string
+  name: string
+  company?: string
   followers: number
 }
 
 export function Profile() {
+  const [profile, setProfile] = useState<GithubProfile>({} as GithubProfile)
   // const [isLoading, setIsLoading] = useState(true)
-  const [profile, setProfile] = useState<GithubProfile>({
-    name: '',
-    bio: '',
-    followers: 0,
-  })
 
-  async function getInfoProfile() {
+  async function getProfile() {
     try {
       // setIsLoading(true)
       const response = await api.get(`/users/${userName}`)
 
       setProfile(response.data)
-    } catch (err) {
-      console.log(err)
     } finally {
       // setIsLoading(false)
     }
   }
 
   useEffect(() => {
-    getInfoProfile()
+    getProfile()
   }, [])
 
   return (
     <ProfileContainer>
-      <img src="https://github.com/marinapsvreis.png" alt="" />
+      <img src={profile.avatar_url} alt="" />
       <ProfileText>
         <header>
           <ProfileName>{profile.name}</ProfileName>
-          <a href="https://github.com/marinapsvreis">
+          <a href={profile.html_url} target="_blank" rel="noreferrer">
             <p>GITHUB </p>
             <ArrowSquareOut size={18} />
           </a>
@@ -63,12 +61,14 @@ export function Profile() {
           <LabelsContainer>
             <LabelContainer>
               <img src={githubIcon} alt="" />
-              <p>marinapsvreis</p>
+              <p>{profile.login}</p>
             </LabelContainer>
-            <LabelContainer>
-              <img src={buildingIcon} alt="" />
-              <p>Rocketseat</p>
-            </LabelContainer>
+            {profile?.company && (
+              <LabelContainer>
+                <img src={buildingIcon} alt="" />
+                <p>{profile.company}</p>
+              </LabelContainer>
+            )}
             <LabelContainer>
               <img src={followersIcon} alt="" />
               <p>{profile.followers} seguidores</p>
