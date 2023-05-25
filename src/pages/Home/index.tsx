@@ -44,7 +44,7 @@ export function Home() {
   return (
     <HomeContainer>
       <Profile />
-      <Search getPosts={getPosts} />
+      <Search postsLength={posts.length} getPosts={getPosts} />
       <CardsContainer>
         {posts.length > 0 ? (
           posts.map((post) => {
