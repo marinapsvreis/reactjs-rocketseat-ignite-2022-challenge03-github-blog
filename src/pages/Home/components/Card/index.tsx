@@ -9,7 +9,7 @@ export function Card({ post }: CardProps) {
   const resumeFromBody = post.body.substring(0, 220)
 
   return (
-    <CardContainer>
+    <CardContainer to={`/post/${post.number}`}>
       <header>
         <h4>{post.title}</h4>
         <p>Há 1 dia</p>

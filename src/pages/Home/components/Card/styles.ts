@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   width: 100%;
   max-width: 26rem;
   height: 16.25rem;
   background-color: ${(props) => props.theme['base-post']};
   border-radius: 10px;
   padding: 2rem;
+  text-decoration: none;
 
   header {
     display: flex;
@@ -20,6 +22,7 @@ export const CardContainer = styled.div`
     }
 
     p {
+      color: ${(props) => props.theme['base-title']};
       white-space: nowrap;
     }
   }
@@ -29,6 +32,7 @@ export const CardContainer = styled.div`
     text-overflow: ellipsis;
     height: 7rem;
     overflow: hidden;
+    color: ${(props) => props.theme['base-title']};
   }
 
   @media (max-width: 928px) {
