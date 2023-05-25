@@ -1,4 +1,5 @@
 import githubIcon from '@/assets/github.svg'
+import { api } from '@/lib/axios'
 import { ArrowSquareOut } from 'phosphor-react'
 import { useEffect, useState } from 'react'
 import buildingIcon from '../../assets/building.svg'
@@ -16,56 +17,58 @@ import {
   SearchContainer,
 } from './styles'
 
+const userName = import.meta.env.VITE_GITHUB_USERNAME
+const repoName = import.meta.env.VITE_GITHUB_REPONAME
+
 interface GithubProfile {
   name: string
   bio: string
   followers: number
 }
 
-export interface Issue {
-  id: number
+export interface Post {
+  number: number
   title: string
   body: string
   created_at: string
 }
 
 export function Home() {
+  const [posts, setPosts] = useState<Post[]>([])
+  // const [query, setQuery] = useState('')
+
   const [profile, setProfile] = useState<GithubProfile>({
     name: '',
     bio: '',
     followers: 0,
   })
 
-  const [issues, setIssues] = useState<Issue[]>([])
-
   async function getInfoProfile() {
-    await fetch('https://api.github.com/users/marinapsvreis')
-      .then((response) => response.json())
-      .then((data) => {
-        setProfile({
-          name: data.name,
-          bio: data.bio,
-          followers: data.followers,
-        })
-      })
-      .catch((error) => console.log(error))
+    try {
+      const response = await api.get(`/users/${userName}`)
+
+      setProfile(response.data)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
-  async function getIssuesFromRepository() {
-    await fetch(
-      'https://api.github.com/search/issues?q=%20repo:marinapsvreis/rocketseat-ignite-reactjs-trilhanova-desafio03-github-blog',
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setIssues(data.items)
-      })
-      .catch((error) => console.log(error))
+  async function getPosts(query: string = '') {
+    try {
+      const response = await api.get(
+        `/search/issues?q=${query}%20repo:${userName}/${repoName}`,
+      )
+
+      setPosts(response.data.items)
+    } finally {
+      console.log('TESTE')
+    }
   }
 
   useEffect(() => {
     getInfoProfile()
-    getIssuesFromRepository()
-  }, [])
+    getPosts()
+  }, [posts])
 
   return (
     <HomeContainer>
@@ -101,20 +104,18 @@ export function Home() {
       <SearchContainer>
         <header>
           <h4>Publicações</h4>
-          <p>6 publicações</p>
+          <p>{posts.length || 0} publicações</p>
         </header>
         <input type="text" placeholder="Buscar conteúdo" />
       </SearchContainer>
       <CardsContainer>
-        {issues.map((issue) => {
-          return <Card key={issue.id} issue={issue} />
-        })}
-
-        {/* <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card /> */}
+        {posts.length > 0 ? (
+          posts.map((post) => {
+            return <Card key={post.number} post={post} />
+          })
+        ) : (
+          <p>Não tem nenhum post</p>
+        )}
       </CardsContainer>
     </HomeContainer>
   )
