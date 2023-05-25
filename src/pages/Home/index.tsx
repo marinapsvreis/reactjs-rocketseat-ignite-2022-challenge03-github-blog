@@ -1,3 +1,4 @@
+import { Spinner } from '@/components/Spinner'
 import { api } from '@/lib/axios'
 import { useEffect, useState } from 'react'
 import { Card } from './components/Card'
@@ -22,18 +23,18 @@ export interface Post {
 
 export function Home() {
   const [posts, setPosts] = useState<Post[]>([])
-  // const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   async function getPosts(query: string = '') {
     try {
-      // setIsLoading(true)
+      setIsLoading(true)
       const response = await api.get(
         `/search/issues?q=${query}%20repo:${userName}/${repoName}`,
       )
 
       setPosts(response.data.items)
     } finally {
-      // setIsLoading(false)
+      setIsLoading(false)
     }
   }
 
@@ -46,12 +47,18 @@ export function Home() {
       <Profile />
       <Search postsLength={posts.length} getPosts={getPosts} />
       <CardsContainer>
-        {posts.length > 0 ? (
-          posts.map((post) => {
-            return <Card key={post.number} post={post} />
-          })
+        {isLoading ? (
+          <Spinner />
         ) : (
-          <p>Não tem nenhum post</p>
+          <>
+            {posts.length > 0 ? (
+              posts.map((post) => {
+                return <Card key={post.number} post={post} />
+              })
+            ) : (
+              <p>Não tem nenhum post</p>
+            )}
+          </>
         )}
       </CardsContainer>
     </HomeContainer>
