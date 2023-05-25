@@ -6,7 +6,7 @@ interface CardProps {
 }
 
 export function Card({ post }: CardProps) {
-  const resumeFromBody = post.body.substring(0, 175)
+  const resumeFromBody = post.body.substring(0, 220)
 
   return (
     <CardContainer>
