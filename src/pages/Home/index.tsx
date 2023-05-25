@@ -9,7 +9,7 @@ import { CardsContainer, HomeContainer } from './styles'
 const userName = import.meta.env.VITE_GITHUB_USERNAME
 const repoName = import.meta.env.VITE_GITHUB_REPONAME
 
-export interface Post {
+export interface IPost {
   title: string
   body: string
   created_at: string
@@ -22,7 +22,7 @@ export interface Post {
 }
 
 export function Home() {
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   async function getPosts(query: string = '') {

@@ -1,9 +1,9 @@
 import { relativeDateFormatter } from '@/utils/formatter'
-import { Post } from '../..'
+import { IPost } from '../..'
 import { CardContainer } from './styles'
 
 interface CardProps {
-  post: Post
+  post: IPost
 }
 
 export function Card({ post }: CardProps) {
