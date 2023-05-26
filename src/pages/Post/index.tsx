@@ -37,7 +37,7 @@ export function Post() {
   return (
     <PostContainer>
       <PostHeader postData={postData} isLoading={isLoading} />
-      <PostContent postData={postData} isLoading={isLoading} />
+      <PostContent content={postData.body} isLoading={isLoading} />
     </PostContainer>
   )
 }
