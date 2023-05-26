@@ -22,7 +22,8 @@ export const ContentContainer = styled.div`
   }
 
   pre {
-    background-color: ${(props) => props.theme['base-post']};
+    background-color: ${(props) => props.theme['base-post']} !important;
+    margin-top: 1rem;
     padding: 1rem;
 
     > div {
