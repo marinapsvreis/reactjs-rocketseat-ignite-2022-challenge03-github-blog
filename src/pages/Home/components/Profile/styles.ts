@@ -32,6 +32,11 @@ export const ProfileContainer = styled.div`
       color: ${(props) => props.theme.blue};
 
       margin-top: 5px;
+
+      p {
+        font-weight: bold;
+        margin-top: 0.11rem;
+      }
     }
   }
 
